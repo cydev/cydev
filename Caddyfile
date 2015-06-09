@@ -1,0 +1,4 @@
+local.cydev.ru:1234
+gzip
+browse / static/index.html
+tls server.crt server.key
