@@ -1,4 +1,5 @@
 local.cydev.ru:1234
 gzip
 browse / static/index.html
+browse /hath static/hath.html
 tls server.crt server.key

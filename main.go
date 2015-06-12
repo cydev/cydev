@@ -26,7 +26,7 @@ func main() {
 	e.Use(mw.Recover())
 	e.Use(mw.Logger())
 	e.Index("static/index.html")
-	e.ServeFile("/hath", "static/index.html")
+	e.ServeFile("/hath", "static/hath.html")
 	e.Static("/static", "static")
 
 	var srv http.Server

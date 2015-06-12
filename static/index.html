@@ -12,11 +12,34 @@
             padding-top: 20px;
             padding-bottom: 20px;
         }
+        .cydev-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: no-repeat -80px -100px url(/static/img/cydev.jpg);
+            margin-left: -19px;
+            margin-top: -19px;
+            /*-webkit-filter: blur(3px);*/
+            /*filter: blur(3px);*/
+            transition: 0.3s all ease;
+            opacity: 1;
+            -webkit-transition: 0.3s all ease;
+        }
+        .cydev-background.blurred {
+            -webkit-filter: blur(1px);
+            filter: blur(1px);
+            opacity: 0.8;
+        }
         .jumbotron {
-            background: no-repeat -80px -200px url(/static/img/cydev.jpg);
+            position: relative;
+            overflow: hidden;
         }
         .container {
             z-index: 20;
+        }
+        #content {
+            position: relative;
+            z-index: 30;
         }
         </style>
 
@@ -36,9 +59,17 @@
               </div>
 
               <div class="jumbotron">
-                <h1>cydev</h1>
-                <p class="lead">rapid software development</p>
-                <p><a class="btn btn-lg btn-success" href="https://github.com/cydev/" role="button" target="_blank">github projects</a></p>
+                <div class="cydev-background"></div>
+                <section id="content">
+                    <h1>cydev</h1>
+                    <p class="lead">rapid software development</p>
+                    <p><a class="btn btn-lg btn-success" href="https://github.com/cydev/" role="button" target="_blank">see us on github</a></p>
+                    <p>projects: </p>
+                    <p><a class="btn btn-lg btn-default" href="/hath" role="button">hath client</a></p>
+                    <p><a class="btn btn-lg btn-default" href="https://github.com/cydev/cluster-binpatch" role="button">cluster bsdiff</a></p>
+                    <p><a class="btn btn-lg btn-default" href="https://github.com/ernado/selectel" role="button">selectel go api</a></p>
+                    <p><a class="btn btn-lg btn-default" href="https://github.com/cydev/cydev" role="button">cydev.ru </a></p>
+                </section>
               </div>
 
               <div class="row marketing">
@@ -70,6 +101,12 @@
             $(document).ready(function() {
                 // This command is used to initialize some elements and make them work properly
                 $.material.init();
+                $('.btn').hover(function() {
+                    $('.cydev-background').addClass('blurred');
+                }, function() {
+                    // on mouseout, reset the background colour
+                    $('.cydev-background').removeClass('blurred');
+                });
             });
         </script>
     </body>
