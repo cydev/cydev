@@ -12,7 +12,11 @@ env.hosts = ['cydev.ru']
 
 
 def deploy(branch='master', restart='yes'):
+    local('go build')
     with cd(env.base_dir):
+        run('rm cydev.ru')
+        put('cydev', 'cydev.ru')
+        run('chmod +x cydev.ru')
         run('git fetch')
         run('git checkout %s' % branch)
         run('git pull --rebase origin %s' % branch)
@@ -25,4 +29,3 @@ def restart():
 def status():
     env.user = 'root'
     run('systemctl status cydev')
-

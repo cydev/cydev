@@ -10,6 +10,10 @@ import (
 	mw "github.com/labstack/echo/middleware"
 )
 
+const (
+	version = "1a"
+)
+
 var (
 	addr = flag.String("addr", "localhost:1234", "Addr to listen")
 	cert = flag.String("cert", "", "TLS cert")
@@ -32,6 +36,7 @@ func main() {
 	var srv http.Server
 	srv.Addr = *addr
 	srv.Handler = e
+	log.Println("cydev.ru listening on", *addr, "version", version)
 	http2.ConfigureServer(&srv, nil)
 	if len(*key) != 0 && len(*cert) != 0 {
 		log.Fatal(srv.ListenAndServeTLS(*cert, *key))
